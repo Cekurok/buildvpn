@@ -1,5 +1,7 @@
 #!/bin/bash
 
+###  HHHHHHHHMMMMMMMMMMMPPPPPPPPPHHHHHHHHHHH!!!!!!!!!!!
+
 # Global Variables
 openvpn_dir='/etc/openvpn'
 easyrsa_dir='/etc/openvpn/easy-rsa'
