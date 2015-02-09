@@ -26,13 +26,14 @@ func_install(){
   apt-get update
   echo
   echo '[*] Installing Packages'
-  apt-get -y install openvpn openssl
+  apt-get -y install openvpn openssl easy-rsa
 }
 
 # Server Buildout Function
 func_build_server(){
   # Locate RSA Example Directory
-  easyrsa_fnd=$(find / -wholename "*/easy-rsa/2.0/*vars"|sed 's:/vars::'|head -n1)
+  #easyrsa_fnd=$(find / -wholename "*/easy-rsa/2.0/*vars"|sed 's:/vars::'|head -n1)
+  easyrsa_fnd=$(find / -name vars|grep easy-rsa|head -n1|sed 's:/vars::')
 
   # RSA Validation
   if [[ ${easyrsa_fnd} == '' ]]; then
@@ -286,13 +287,13 @@ if [ $(whoami) != 'root' ]; then
 fi
 
 # Check Debian
-if [[ ! ${debian_vers} -ge '5' ]]; then
-  func_title
-  echo
-  echo '[!] Error: BuildVPN.sh is only supported on Debian version 5+.'
-  echo
-  exit 1
-fi
+#if [[ ! ${debian_vers} -ge '5' ]]; then
+#  func_title
+#  echo
+#  echo '[!] Error: BuildVPN.sh is only supported on Debian version 5+.'
+#  echo
+#  exit 1
+#fi
 
 # Select Function and Menu Statement
 func_title
